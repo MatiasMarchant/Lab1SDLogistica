@@ -208,10 +208,6 @@ func main() {
 				s.PaquetesEnMarcha,
 				s.ListaRegistro)
 
-			fmt.Println(s.PaquetesEnMarcha) //Borrar................
-			fmt.Println(s.ListaRegistro)    //Borrar................
-			fmt.Println("____________")     //Borrar................
-
 			// Se envía a Finanzas las entregas procesadas
 			enviarRabbit(entregasProcesadas)
 		}
