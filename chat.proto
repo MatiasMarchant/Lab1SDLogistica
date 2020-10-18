@@ -1,0 +1,67 @@
+syntax = "proto3";
+package chat;
+
+message Ordenclientepymes {
+    string id = 1;
+    string producto = 2;
+    int32 valor = 3;
+    string tienda = 4;
+    string destino = 5;
+    bool prioritario = 6;
+}
+
+
+message Ordenclienteretail {
+    string id = 1;
+    string producto = 2;
+    int32 valor = 3;
+    string tienda = 4;
+    string destino = 5;
+}
+
+message Ordenseguimiento {
+    string Nordenseguimiento = 1;
+}
+
+message Estado {
+    string Estado = 1;
+}
+
+message ColaPaquete {
+    string idpaquete = 1;
+    string seguimiento = 2;
+    string tipo = 3;
+    string valor = 4;
+    string intentos = 5;
+    string estado = 6;
+    string origen = 7;
+    string destino = 8;
+}
+
+message PaqueteEnviado {
+    string idpaquete = 1;
+    string seguimiento = 2;
+    string tipo = 3;
+    string valor = 4;
+    string intentos = 5;
+    string estado = 6;
+    string origen = 7;
+    string destino = 8;
+    string idcamion = 9;
+}
+
+message IdCamion {
+    string idcamion = 1;
+}
+
+service ChatService {
+    rpc ActualizarRegistroPaqueteCamionRetail(PaqueteEnviado) returns (PaqueteEnviado) {}
+    rpc EntregarPaqueteCamionRetail(IdCamion) returns (ColaPaquete) {}
+    rpc ActualizarRegistroPaqueteCamionNormal(PaqueteEnviado) returns (PaqueteEnviado) {}
+    rpc EntregarPaqueteCamionNormal(IdCamion) returns (ColaPaquete) {}
+    rpc RecibirOrdenPymes(Ordenclientepymes) returns (Ordenseguimiento) {}
+    rpc RedecirOrdenPymes(Ordenclientepymes) returns (Ordenclientepymes) {}
+    rpc RecibirOrdenRetail(Ordenclienteretail) returns (Ordenseguimiento) {}
+    rpc RedecirOrdenRetail(Ordenclienteretail) returns (Ordenclienteretail) {}
+    rpc CodigoSeguimiento(Ordenseguimiento) returns (Estado) {}
+}
