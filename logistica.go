@@ -98,7 +98,7 @@ func procesarEntregas(paquetesProcesados []string,
 
 	for _, Paquete := range paqueteEnMarcha {
 
-		if (Paquete.Id_paquete != "9999" && Paquete.Id_paquete != "NoPaquetes" ){ 
+		if (Paquete.Idpaquete != "9999" && Paquete.Idpaquete != "NoPaquetes" ){ 
 
 			IntIntentos, _ := strconv.Atoi(Paquete.Intentos)
 			print(Paquete.Intentos)
