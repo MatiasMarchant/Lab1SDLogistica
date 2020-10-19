@@ -203,6 +203,7 @@ func main() {
 
 	go func() {
 		for {
+			
 			// Cada 2 segundos se consulta son el servidor (s), y se obtiene
 			// PaquetesEnMarcha y ListaRegistro, para ser procesados.
 			time.Sleep(2 * time.Second)
