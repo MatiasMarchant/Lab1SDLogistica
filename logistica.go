@@ -144,7 +144,7 @@ func enviarRabbit(entregasProcesadas []Entrega) {
 		nil,
 	)
 
-	fmt.Println(q)
+
 	if err != nil {
 		fmt.Println(err)
 	}
