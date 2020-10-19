@@ -135,7 +135,7 @@ func enviarRabbit(entregasProcesadas []Entrega) {
 	}
 	defer ch.Close()
 
-	q, err := ch.QueueDeclare(
+	_, err := ch.QueueDeclare(
 		"TestQueue",
 		false,
 		false,
