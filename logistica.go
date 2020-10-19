@@ -99,7 +99,7 @@ func procesarEntregas(paquetesProcesados []string,
 	for _, Paquete := range paqueteEnMarcha {
 
 		IntIntentos, _ := strconv.Atoi(Paquete.Intentos)
-		print(IntIntentos)
+		print(Paquete.Intentos)
 		if (Paquete.Estado == "Recibido" || Paquete.Estado == "No Recibido") && !InArr(Paquete.Idpaquete, paquetesProcesados) {
 
 			paquetesProcesados = append(paquetesProcesados, Paquete.Idpaquete)
@@ -210,6 +210,10 @@ func main() {
 				s.ListaRegistro)
 
 			// Se envía a Finanzas las entregas procesadas
+
+			fmt.Println("-------------")
+			fmt.Println(entregasProcesadas)
+			
 			enviarRabbit(entregasProcesadas)
 		}
 	}()
