@@ -98,23 +98,26 @@ func procesarEntregas(paquetesProcesados []string,
 
 	for _, Paquete := range paqueteEnMarcha {
 
-		IntIntentos, _ := strconv.Atoi(Paquete.Intentos)
-		print(Paquete.Intentos)
-		if (Paquete.Estado == "Recibido" || Paquete.Estado == "No Recibido") && !InArr(Paquete.Idpaquete, paquetesProcesados) {
+		if (Paquete.Id_paquete != "9999" && Paquete.Id_paquete != "NoPaquetes" ){ 
 
-			paquetesProcesados = append(paquetesProcesados, Paquete.Idpaquete)
+			IntIntentos, _ := strconv.Atoi(Paquete.Intentos)
+			print(Paquete.Intentos)
+			if (Paquete.Estado == "Recibido" || Paquete.Estado == "No Recibido") && !InArr(Paquete.Idpaquete, paquetesProcesados) {
 
-			var tipo string
-			var valor int
-			tipo, valor = tipoYvalor(Paquete.Idpaquete, listaRegistro)
+				paquetesProcesados = append(paquetesProcesados, Paquete.Idpaquete)
 
-			ent := &Entrega{Id_paquete: Paquete.Idpaquete,
-				Tipo:     tipo,
-				Valor:    valor,
-				Intentos: IntIntentos,
-				Estado:   Paquete.Estado}
+				var tipo string
+				var valor int
+				tipo, valor = tipoYvalor(Paquete.Idpaquete, listaRegistro)
 
-			entregasProcesadas = append(entregasProcesadas, *ent)
+				ent := &Entrega{Id_paquete: Paquete.Idpaquete,
+					Tipo:     tipo,
+					Valor:    valor,
+					Intentos: IntIntentos,
+					Estado:   Paquete.Estado}
+
+				entregasProcesadas = append(entregasProcesadas, *ent)
+			}
 		}
 	}
 	return paquetesProcesados, entregasProcesadas
