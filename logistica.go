@@ -68,8 +68,7 @@ func InArr(id string, arr []string) bool {
 // Recibe un idpaquete y la listaRegistro, retorna el tipo y el valor
 // del paquete con el id idpaquete.
 func tipoYvalor(idpaquete string,
-	listaRegistro []chat.Registro,
-) (string, int) {
+				listaRegistro []chat.Registro) (string, int) {
 
 	var tipo string
 	var valor int
@@ -101,7 +100,7 @@ func procesarEntregas(paquetesProcesados []string,
 		if (Paquete.Idpaquete != "9999" && Paquete.Idpaquete != "NoPaquetes" ){ 
 
 			IntIntentos, _ := strconv.Atoi(Paquete.Intentos)
-			print(Paquete.Intentos)
+
 			if (Paquete.Estado == "Recibido" || Paquete.Estado == "No Recibido") && !InArr(Paquete.Idpaquete, paquetesProcesados) {
 
 				paquetesProcesados = append(paquetesProcesados, Paquete.Idpaquete)
@@ -213,9 +212,6 @@ func main() {
 				s.ListaRegistro)
 
 			// Se envía a Finanzas las entregas procesadas
-
-			fmt.Println("-------------")
-			fmt.Println(entregasProcesadas)
 			
 			enviarRabbit(entregasProcesadas)
 		}
